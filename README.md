@@ -75,7 +75,7 @@ Add it in your module build.gradle
 ```
 ![AmountView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/AmountView.gif)
 
-** 4、倒计时按钮**
+**4、倒计时按钮**
 * MyTimeButton：倒计时按钮
 ```
 <com.qlh.sdk.myview.button.MyTimeButton
