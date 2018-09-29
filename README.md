@@ -34,7 +34,7 @@ Add it in your module build.gradle
         app:edt_delete_icon_height="@dimen/d20"//删除图标高度
         android:drawableRight="@drawable/delete"/>//删除图标
 ```
-![ClearEditText](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/edittext.gif)
+![ClearEditText](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/MyClearEditText.gif)
 
 **2、图片**
 * CircleImageView：带边框的圆形图片
@@ -48,7 +48,7 @@ Add it in your module build.gradle
         app:civ_fill_color="#00FF00"//填充空白颜色
         android:src="@drawable/live_room_bg"/>
 ```
-![CircleImageView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/circleImageview.jpg)
+![CircleImageView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/CircleImageView.jpg)
 
 **3、数字按钮**
 * AmountView:防购物车增减按钮
