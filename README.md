@@ -19,7 +19,7 @@ Add it in your project build.gradle at the end of repositories:
 Add it in your module build.gradle
 ```
 	dependencies {
-	       implementation 'com.github.wzgl5533:CustomViewInstruction:1.0'
+	       implementation 'com.github.wzgl5533:CustomViewInstruction:1.1'
 	}
 ```
 ### 模块分类
