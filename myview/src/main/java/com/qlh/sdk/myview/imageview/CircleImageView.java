@@ -79,9 +79,7 @@ public class CircleImageView extends AppCompatImageView {
     private boolean mDisableCircularTransformation;
 
     public CircleImageView(Context context) {
-        super(context);
-
-        init();
+        this(context,null);
     }
 
     public CircleImageView(Context context, AttributeSet attrs) {
@@ -90,7 +88,11 @@ public class CircleImageView extends AppCompatImageView {
 
     public CircleImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        handleStyleable(context, attrs, defStyle);
+        init();
+    }
 
+    private void handleStyleable(Context context, AttributeSet attrs, int defStyle) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView, defStyle, 0);
 
         mBorderWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_civ_border_width, DEFAULT_BORDER_WIDTH);
@@ -99,8 +101,6 @@ public class CircleImageView extends AppCompatImageView {
         mFillColor = a.getColor(R.styleable.CircleImageView_civ_fill_color, DEFAULT_FILL_COLOR);
 
         a.recycle();
-
-        init();
     }
 
     private void init() {

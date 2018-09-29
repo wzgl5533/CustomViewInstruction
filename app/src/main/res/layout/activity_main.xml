@@ -29,4 +29,30 @@
         app:civ_border_overlay="false"
         app:civ_fill_color="#00FF00"
         android:src="@drawable/live_room_bg"/>
+
+    <com.qlh.sdk.myview.number.AmountView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/d100"
+        app:btnWidth="@dimen/d100"
+        app:btnTextSize="@dimen/d20"
+        app:btnRightBg="@mipmap/ic_launcher"
+        app:numTvWidth="@dimen/d100"
+        app:numTextSize="@dimen/d10"
+        app:NumTvColor="#FF0000"
+        app:btnLeftBg="@drawable/live_room_bg"
+        app:btnTvColor="#FF0000"
+        app:numTvBg="@color/colorPrimary"
+        app:maxValue="20"
+        app:minValue="10"
+        app:minValueTip="已经是最小值了~~"
+        app:maxValueTip="已经是最大值了~~"
+        app:step="1"/>
+    <com.qlh.sdk.myview.button.MyTimeButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d10"
+        app:textBefore="获取验证码"
+        app:textAfter="秒后重新获取验证码"
+        android:background="@color/colorPrimary"
+        app:timeLength="10"/>
 </LinearLayout>

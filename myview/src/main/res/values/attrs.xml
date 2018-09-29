@@ -13,4 +13,29 @@
         <attr name="civ_border_overlay" format="boolean" />
         <attr name="civ_fill_color" format="color" />
     </declare-styleable>
+    <!--AmountView-->
+    <declare-styleable name="AmountView">
+        <attr name="btnWidth" format="dimension"/> <!-- 左右2边+-按钮的宽度 -->
+        <attr name="numTvWidth" format="dimension"/> <!-- 中间TextView的宽度 -->
+        <attr name="numTextSize" format="dimension"/> <!-- 中间TextView的文字大小 -->
+        <attr name="btnTextSize" format="dimension"/><!-- 左右2边+-按钮的文字大小 -->
+        <attr name="btnTvColor" format="color"/><!-- 按钮文本颜色 -->
+        <attr name="NumTvColor" format="color"/><!-- 中间文本颜色 -->
+        <attr name="btnLeftBg" format="reference|color"/><!-- 左边按钮背景-->
+        <attr name="btnRightBg" format="reference|color"/><!-- 右边按钮背景-->
+        <attr name="numTvBg" format="reference|color"/><!--输入框背景-->
+        <attr name="minValue" format="integer"/><!--能减到的最小值-->
+        <attr name="maxValue" format="integer"/><!--能加到的最小值-->
+        <attr name="minValueTip" format="string"/><!--减到的最小值提示-->
+        <attr name="maxValueTip" format="string"/><!--加到的最小值提示-->
+        <attr name="step" format="integer"/><!--变化步长-->
+    </declare-styleable>
+
+    <!--MyTimeButton-->
+    <declare-styleable name="MyTimeButton">
+        <attr name="textBefore" format="string"/><!--点击之前按钮显示文本-->
+        <attr name="textAfter" format="string"/><!--点击之后按钮显示文本-->
+        <attr name="timeLength" format="float"/><!--倒计时长度，单位为s-->
+        <attr name="bg" format="reference|color"/><!--背景-->
+    </declare-styleable>
 </resources>
