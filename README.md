@@ -50,3 +50,41 @@ Add it in your module build.gradle
 ```
 ![CircleImageView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/circleImageview.jpg)
 
+**3、数字按钮**
+* AmountView:防购物车增减按钮
+```
+<com.qlh.sdk.myview.number.AmountView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/d100"
+        app:btnWidth="@dimen/d100"//左右2边+-按钮的宽度
+        app:btnTextSize="@dimen/d20"//中间TextView的文字大小
+        app:btnRightBg="@mipmap/ic_launcher"//右边按钮背景
+        app:numTvWidth="@dimen/d100"//中间TextView的宽度
+        app:numTextSize="@dimen/d10"//左右2边+-按钮的文字大小
+        app:NumTvColor="#FF0000"//中间文本颜色
+        app:btnLeftBg="@drawable/live_room_bg"//左边按钮背景
+        app:btnTvColor="#FF0000"//按钮文本颜色
+        app:numTvBg="@color/colorPrimary"//输入框背景
+        app:maxValue="20"//能加到的最小值
+        app:minValue="10"//能减到的最小值
+        app:minValueTip="已经是最小值了~~"//减到的最小值提示
+        app:maxValueTip="已经是最大值了~~"/>//加到的最小值提示
+	app:step="1"//步长值
+	/>
+	
+```
+![AmountView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/AmountView.gif)
+
+** 4、倒计时按钮**
+* MyTimeButton：倒计时按钮
+```
+<com.qlh.sdk.myview.button.MyTimeButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d10"
+        app:textBefore="获取验证码"//点击前文本
+        app:textAfter="秒后重新获取验证码"//点击后文本
+        app:timeLength="10"//总时长
+	/>
+```
+![MyTimeButton](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/MyTimeButton.gif)
