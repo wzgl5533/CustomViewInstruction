@@ -38,4 +38,25 @@
         <attr name="timeLength" format="float"/><!--倒计时长度，单位为s-->
         <attr name="bg" format="reference|color"/><!--背景-->
     </declare-styleable>
+
+    <declare-styleable name="RangeBarView">
+        <attr name="rect_line_height" format="dimension"/><!--轨道线框高度-->
+        <attr name="rect_line_default_color" format="color"/><!--轨道线框默认颜色-->
+        <attr name="rect_line_checked_color" format="color"/><!--轨道线框选中颜色-->
+        <attr name="circle_radius" format="dimension"/><!--滑块半径-->
+        <attr name="circle_stroke_width" format="dimension"/><!--滑块描边宽度-->
+        <attr name="left_circle_solid_color" format="color"/><!--左边滑块填充颜色-->
+        <attr name="left_circle_stroke_color" format="color"/><!--左边滑块描边颜色-->
+        <attr name="right_circle_solid_color" format="color"/><!--右边滑块填充颜色-->
+        <attr name="right_circle_stroke_color" format="color"/><!--右边滑块描边颜色-->
+        <attr name="range_text_size" format="dimension"/><!--刻度范围文字大小-->
+        <attr name="range_text_color" format="color"/><!--刻度范围文字颜色-->
+        <attr name="view_text_space" format="dimension"/><!--刻度文本离轨道垂直距离-->
+        <attr name="rect_price_desc_dialog_width" format="dimension"/><!--价格显示对话框宽度-->
+        <attr name="rect_price_desc_dialog_color" format="color"/><!--价格显示对话框颜色,包括底部三角形颜色-->
+        <attr name="rect_price_desc_dialog_corner_radius" format="dimension"/><!--价格显示对话框圆角半径-->
+        <attr name="rect_price_desc_text_size" format="dimension"/><!--价格对话框文字大小-->
+        <attr name="rect_price_desc_text_color" format="color"/><!--价格对话框文字颜色-->
+        <attr name="rect_price_desc_space_to_progress" format="dimension"/><!--价格对话框离轨道垂直距离-->
+    </declare-styleable>
 </resources>

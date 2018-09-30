@@ -13,6 +13,7 @@
         app:edt_delete_icon_height="@dimen/d20"
         android:drawableRight="@drawable/delete"/>
     <com.qlh.sdk.myview.imageview.CircleImageView
+        android:visibility="gone"
         android:layout_width="@dimen/d100"
         android:layout_height="@dimen/d100"
         app:civ_border_width="@dimen/d10"
@@ -22,6 +23,7 @@
         android:src="@drawable/live_room_bg"/>
 
     <com.qlh.sdk.myview.imageview.CircleImageView
+        android:visibility="gone"
         android:layout_width="@dimen/d100"
         android:layout_height="@dimen/d100"
         app:civ_border_width="@dimen/d10"
@@ -31,6 +33,7 @@
         android:src="@drawable/live_room_bg"/>
 
     <com.qlh.sdk.myview.number.AmountView
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/d100"
         app:btnWidth="@dimen/d100"
@@ -48,6 +51,7 @@
         app:maxValueTip="已经是最大值了~~"
         app:step="1"/>
     <com.qlh.sdk.myview.button.MyTimeButton
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/d10"
@@ -55,4 +59,29 @@
         app:textAfter="秒后重新获取验证码"
         android:background="@color/colorPrimary"
         app:timeLength="10"/>
+    <com.qlh.sdk.myview.rangebar.RangeBarView
+        android:id="@+id/view_range_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rect_line_default_color="@color/grey_CD"
+        app:rect_line_checked_color="@color/blue_275D9D"
+        app:left_circle_solid_color="@color/white"
+        app:left_circle_stroke_color="@color/grey_CD"
+        app:right_circle_solid_color="@color/white"
+        app:right_circle_stroke_color="@color/grey_CD"
+        app:circle_stroke_width="2dp"
+        app:circle_radius="10dp"
+        app:rect_line_height="3dp"
+        app:range_text_size="@dimen/d10"
+        app:range_text_color="#FF0000"
+        app:rect_price_desc_dialog_color="#FF0000"
+        app:rect_price_desc_dialog_corner_radius="@dimen/d10"
+        app:rect_price_desc_dialog_width="@dimen/d50"
+        app:rect_price_desc_text_color="#00ff00"
+        app:rect_price_desc_text_size="@dimen/d15"
+        app:rect_price_desc_space_to_progress="@dimen/d10"
+        app:view_text_space="@dimen/d20"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
 </LinearLayout>

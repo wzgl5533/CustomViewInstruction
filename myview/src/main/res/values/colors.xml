@@ -5,4 +5,10 @@
     <color name="white">#FFFFFF</color>
     <color name="grey_CC">#CCCCCC</color>
     <color name="grey_EE">#EEEEEE</color>
+
+    <color name="grey_33">#333333</color>
+    <color name="blue_275D9D">#275D9D</color>
+    <color name="grey_CD">#CDCDCD</color>
+    <color name="red_d10773">#D10773</color>
+    <color name="blue_4499ff">#4499FF</color>
 </resources>
