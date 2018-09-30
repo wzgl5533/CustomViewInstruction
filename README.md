@@ -88,3 +88,34 @@ Add it in your module build.gradle
 	/>
 ```
 ![MyTimeButton](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/MyTimeButton.gif)
+
+**5、范围选择**
+* RangeBarView：价格范围
+```
+<com.qlh.sdk.myview.rangebar.RangeBarView
+        android:id="@+id/view_range_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rect_line_default_color="@color/grey_CD"//轨道线框默认颜色
+        app:rect_line_checked_color="@color/blue_275D9D"//轨道线框选中颜色
+        app:left_circle_solid_color="@color/white"//左边滑块填充颜色
+        app:left_circle_stroke_color="@color/grey_CD"//左边滑块描边颜色
+        app:right_circle_solid_color="@color/white"//右边滑块填充颜色
+        app:right_circle_stroke_color="@color/grey_CD"//右边滑块描边颜色
+        app:circle_stroke_width="2dp"//滑块描边宽度
+        app:circle_radius="10dp"//滑块半径
+        app:rect_line_height="3dp"//轨道线框高度
+        app:range_text_size="@dimen/d10"//刻度范围文字大小
+        app:range_text_color="#FF0000"//刻度范围文字颜色
+        app:rect_price_desc_dialog_color="#FF0000"//价格显示对话框颜色,包括底部三角形颜色
+        app:rect_price_desc_dialog_corner_radius="@dimen/d10"//价格显示对话框圆角半径
+        app:rect_price_desc_dialog_width="@dimen/d50"//价格显示对话框宽度
+        app:rect_price_desc_text_color="#00ff00"//价格对话框文字颜色
+        app:rect_price_desc_text_size="@dimen/d15"//价格对话框文字大小
+        app:rect_price_desc_space_to_progress="@dimen/d10"//价格对话框离轨道垂直距离
+        app:view_text_space="@dimen/d20"//刻度文本离轨道垂直距离
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+```
+![RangeBarView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/RangeBarView.gif)
