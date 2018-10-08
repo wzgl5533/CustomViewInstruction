@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <com.qlh.sdk.myview.edittext.MyClearEditText
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:edt_delete_icon_width="@dimen/d20"
@@ -60,6 +61,7 @@
         android:background="@color/colorPrimary"
         app:timeLength="10"/>
     <com.qlh.sdk.myview.rangebar.RangeBarView
+        android:visibility="gone"
         android:id="@+id/view_range_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,4 +86,34 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <com.qlh.sdk.myview.camera.CameraView
+           android:id="@+id/cam"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"/>
+       <Button
+           android:id="@+id/btn"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="拍照"
+           android:layout_marginBottom="@dimen/d50"
+           android:layout_alignParentBottom="true"
+           android:layout_centerHorizontal="true"/>
+       <ImageView
+           android:id="@+id/img"
+           android:layout_width="@dimen/d200"
+           android:layout_height="@dimen/d200" />
+       <Button
+           android:id="@+id/switchca"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="切换"
+           android:layout_toRightOf="@id/btn"
+           android:layout_marginBottom="@dimen/d50"
+           android:layout_alignParentBottom="true"/>
+   </RelativeLayout>
+
 </LinearLayout>

@@ -20,4 +20,12 @@
         <item name="rect_price_desc_text_color">#FFFFFF</item>
         <item name="rect_price_desc_space_to_progress">5dp</item>
     </style>
+
+    <style name="Widget.CameraView" parent="android:Widget">
+        <item name="android:adjustViewBounds">false</item>
+        <item name="cv_facing">back</item>
+        <item name="cv_aspectRatio">4:3</item>
+        <item name="cv_autoFocus">true</item>
+        <item name="cv_flash">auto</item>
+    </style>
 </resources>

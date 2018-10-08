@@ -6,4 +6,5 @@ package com.qlh.sdk.myview.utils;
  */
 public class QLHUtils {
 
+
 }
