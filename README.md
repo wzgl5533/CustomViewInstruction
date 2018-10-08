@@ -128,4 +128,4 @@ Add it in your module build.gradle
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
 ```
-![CameraView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/CameraView.png)
+![CameraView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/CameraView.jpg)
