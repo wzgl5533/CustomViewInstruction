@@ -19,7 +19,7 @@ Add it in your project build.gradle at the end of repositories:
 Add it in your module build.gradle
 ```
 	dependencies {
-	       implementation 'com.github.wzgl5533:CustomViewInstruction:1.2'
+	       implementation 'com.github.wzgl5533:CustomViewInstruction:1.3'
 	}
 ```
 ### 模块分类
@@ -119,3 +119,13 @@ Add it in your module build.gradle
         />
 ```
 ![RangeBarView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/RangeBarView.gif)
+
+**6、自定义相机***
+* CameraView：提供简洁的拍照画面，可以自定义操作界面，亦可结合(自定义裁剪框使用)[https://github.com/wzgl5533/CropView]
+```
+<com.qlh.sdk.myview.camera.CameraView
+    android:id="@+id/cam"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+```
+![CameraView]()
