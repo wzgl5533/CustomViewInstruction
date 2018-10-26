@@ -120,7 +120,7 @@ Add it in your module build.gradle
 ```
 ![RangeBarView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/RangeBarView.gif)
 
-**6、自定义相机***
+**6、自定义相机（解决拍照旋转问题）***
 * CameraView：提供简洁的拍照画面，可以自定义操作界面，亦可结合[自定义裁剪框使用](https://github.com/wzgl5533/CropView)
 ```
 <com.qlh.sdk.myview.camera.CameraView
