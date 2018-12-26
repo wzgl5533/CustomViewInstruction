@@ -38,7 +38,7 @@
         <attr name="timeLength" format="float"/><!--倒计时长度，单位为s-->
         <attr name="bg" format="reference|color"/><!--背景-->
     </declare-styleable>
-
+    <!--RangeBarView-->
     <declare-styleable name="RangeBarView">
         <attr name="rect_line_height" format="dimension"/><!--轨道线框高度-->
         <attr name="rect_line_default_color" format="color"/><!--轨道线框默认颜色-->
@@ -59,7 +59,7 @@
         <attr name="rect_price_desc_text_color" format="color"/><!--价格对话框文字颜色-->
         <attr name="rect_price_desc_space_to_progress" format="dimension"/><!--价格对话框离轨道垂直距离-->
     </declare-styleable>
-
+    <!--CameraView-->
     <declare-styleable name="CameraView">
         <!--
           Set this to true if you want the CameraView to adjust its bounds to preserve the aspect
@@ -102,5 +102,12 @@
             -->
             <enum name="redEye" value="4"/>
         </attr>
+    </declare-styleable>
+    <!--SignatureView-->
+    <declare-styleable name="SignatureView">
+        <attr name="sv_paint_width" format="dimension"/><!--画笔宽度-->
+        <attr name="sv_paint_color" format="reference|color"/><!--画笔颜色-->
+        <attr name="sv_canvas_color" format="reference|color"/><!--画布颜色-->
+
     </declare-styleable>
 </resources>

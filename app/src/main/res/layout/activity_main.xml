@@ -89,7 +89,8 @@
 
    <RelativeLayout
        android:layout_width="match_parent"
-       android:layout_height="match_parent">
+       android:layout_height="match_parent"
+       android:visibility="gone">
        <com.qlh.sdk.myview.camera.CameraView
            android:id="@+id/cam"
            android:layout_width="match_parent"
@@ -115,5 +116,24 @@
            android:layout_marginBottom="@dimen/d50"
            android:layout_alignParentBottom="true"/>
    </RelativeLayout>
+
+    <com.qlh.sdk.myview.view.SignatureView
+        android:id="@+id/sign_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:sv_canvas_color="#FFFFFF"
+        app:sv_paint_color="@color/red_d10773"
+        app:sv_paint_width="4dp"/>
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clear"/>
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save"/>
 
 </LinearLayout>

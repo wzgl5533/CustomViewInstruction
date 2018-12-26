@@ -2,29 +2,21 @@ package com.qlh.customviewinstruction
 
 import android.Manifest
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.graphics.Matrix
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
-import com.qlh.sdk.myview.app.AppConstant
 import com.qlh.sdk.myview.camera.CameraImpl
 import com.qlh.sdk.myview.camera.CameraView
-import com.qlh.sdk.myview.utils.DateUtil
-import com.qlh.sdk.myview.utils.ImageUtils
-import com.qlh.sdk.myview.utils.QLHUtils
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.File
-import java.util.*
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
@@ -106,5 +98,29 @@ class MainActivity : AppCompatActivity() {
                 //Log.e("11111","onPicturePreview")
             }
         })
+
+        //签名
+        sign1()
     }
+
+   private fun sign1(){
+
+    sign_view.setTouch {
+        Log.d("11111",it.toString())
+    }
+
+       clear.setOnClickListener {
+           sign_view.clear()
+       }
+       save.setOnClickListener {
+           if (sign_view.signature){
+               try {
+                   sign_view.save("/sdcard/qm.png", true, 10,Bitmap.CompressFormat.PNG)
+               }catch (e:IOException){
+                   e.printStackTrace()
+               }
+           }
+       }
+
+   }
 }
