@@ -129,3 +129,16 @@ Add it in your module build.gradle
     android:layout_height="match_parent"/>
 ```
 ![CameraView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/CameraView.jpg)
+
+**7、自定义签名***
+* SignatureView：自定义签名
+```
+<com.qlh.sdk.myview.view.SignatureView
+        android:id="@+id/sign_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:sv_canvas_color="#FFFFFF"
+        app:sv_paint_color="@color/red_d10773"
+        app:sv_paint_width="4dp"/>
+```
+![SignatureView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/SignatureView.jpg)
