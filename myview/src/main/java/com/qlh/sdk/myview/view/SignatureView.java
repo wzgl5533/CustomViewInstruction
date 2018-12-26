@@ -30,8 +30,6 @@ import java.io.OutputStream;
  */
 public class SignatureView extends View {
 
-    private Context mContext;
-
     /**
      * 笔画X坐标起点
      */
@@ -91,7 +89,7 @@ public class SignatureView extends View {
         super(context, attrs, defStyleAttr);
         mDensity = getResources().getDisplayMetrics().density;
         handleStyleable(context,attrs,defStyleAttr);
-        init(context);
+        init();
     }
 
     private void handleStyleable(Context context, AttributeSet attrs, int defStyle) {
@@ -102,8 +100,7 @@ public class SignatureView extends View {
         mBackColor = ta.getColor(R.styleable.SignatureView_sv_canvas_color,Color.TRANSPARENT);
     }
 
-    private void init(Context context){
-        mContext = context;
+    private void init(){
         //设置抗锯齿
         mGesturePaint.setAntiAlias(true);
         //设置签名笔画样式
