@@ -16,7 +16,6 @@ import android.view.View;
 
 import com.qlh.sdk.myview.constant.Constant;
 import com.qlh.sdk.myview.R;
-import com.qlh.sdk.myview.callback.Touch;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -98,6 +97,7 @@ public class SignatureView extends View {
         mPaintWidth = ta.getDimensionPixelSize(R.styleable.SignatureView_sv_paint_width, (int) (mPaintWidth*mDensity));
         mPaintColor = ta.getColor(R.styleable.SignatureView_sv_paint_color,Color.BLACK);
         mBackColor = ta.getColor(R.styleable.SignatureView_sv_canvas_color,Color.TRANSPARENT);
+        ta.recycle();
     }
 
     private void init(){
@@ -296,6 +296,11 @@ public class SignatureView extends View {
 
     public void setTouch(Touch touch) {
         this.touch = touch;
+    }
+
+    public interface Touch {
+
+        void OnTouch(int action);
     }
 
     /**

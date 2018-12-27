@@ -108,6 +108,22 @@
         <attr name="sv_paint_width" format="dimension"/><!--画笔宽度-->
         <attr name="sv_paint_color" format="reference|color"/><!--画笔颜色-->
         <attr name="sv_canvas_color" format="reference|color"/><!--画布颜色-->
+    </declare-styleable>
 
+    <!--TextSwitchButton-->
+    <declare-styleable name="TextSwitchButton">
+        <attr name="tsb_left_text" format="string"/>
+        <attr name="tsb_right_text" format="string"/>
+        <attr name="tsb_text_size" format="dimension"/>
+        <attr name="tsb_bg_color" format="color"/>
+        <attr name="tsb_btn_color" format="color"/>
+        <attr name="tsb_text_normal_color" format="color"/>
+        <attr name="tsb_text_selected_color" format="color"/>
+        <attr name="tsb_btn_width" format="dimension"/>
+        <attr name="tsb_shape" format="enum">
+            <enum name="rect" value="0"/>
+            <enum name="round" value="1"/>
+        </attr>
+        <attr name="tsb_corner_radius" format="dimension"/>
     </declare-styleable>
 </resources>

@@ -135,5 +135,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="save"/>
+    <com.qlh.sdk.myview.button.TextSwitchButton
+        android:id="@+id/tsb"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        app:tsb_bg_color="@color/grey_CC"
+        app:tsb_btn_color="@color/blue_275D9D"
+        app:tsb_left_text="出车"
+        app:tsb_right_text="收车"
+        app:tsb_shape="round"
+        app:tsb_text_size="@dimen/d13"
+        app:tsb_corner_radius="@dimen/d15"
+        app:tsb_btn_width="@dimen/d50"
+        app:tsb_text_normal_color="@color/blue_4499ff"
+        app:tsb_text_selected_color="@color/red_d10773"
+        android:layout_marginTop="@dimen/d50" />
 
 </LinearLayout>

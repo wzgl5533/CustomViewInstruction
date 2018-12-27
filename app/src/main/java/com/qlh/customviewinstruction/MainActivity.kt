@@ -101,6 +101,14 @@ class MainActivity : AppCompatActivity() {
 
         //签名
         sign1()
+
+        tsb.setLeftSelectedListener {
+            Log.d("11111","left")
+        }
+
+        tsb.setRightSelectedListener {
+            Log.d("11111","right")
+        }
     }
 
    private fun sign1(){

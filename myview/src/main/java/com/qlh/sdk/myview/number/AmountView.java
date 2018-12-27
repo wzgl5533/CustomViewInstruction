@@ -54,31 +54,31 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
         btnIncrease.setOnClickListener(this);
         etAmount.addTextChangedListener(this);
 
-        TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attrs, R.styleable.AmountView);
+        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.AmountView);
         //宽度
-        int btnWidth = obtainStyledAttributes.getDimensionPixelSize(R.styleable.AmountView_btnWidth, LayoutParams.WRAP_CONTENT);
-        int tvWidth = obtainStyledAttributes.getDimensionPixelSize(R.styleable.AmountView_numTvWidth, 80);
+        int btnWidth = ta.getDimensionPixelSize(R.styleable.AmountView_btnWidth, LayoutParams.WRAP_CONTENT);
+        int tvWidth = ta.getDimensionPixelSize(R.styleable.AmountView_numTvWidth, 80);
         //文字大小
-        int tvTextSize = obtainStyledAttributes.getDimensionPixelSize(R.styleable.AmountView_numTextSize, 0);
-        int btnTextSize = obtainStyledAttributes.getDimensionPixelSize(R.styleable.AmountView_btnTextSize, 0);
+        int tvTextSize = ta.getDimensionPixelSize(R.styleable.AmountView_numTextSize, 0);
+        int btnTextSize = ta.getDimensionPixelSize(R.styleable.AmountView_btnTextSize, 0);
         //文字颜色
-        int tvColor = obtainStyledAttributes.getColor(R.styleable.AmountView_NumTvColor, getResources().getColor(R.color.black));
-        int btnTvColor = obtainStyledAttributes.getColor(R.styleable.AmountView_btnTvColor, getResources().getColor(R.color.black));
+        int tvColor = ta.getColor(R.styleable.AmountView_NumTvColor, getResources().getColor(R.color.black));
+        int btnTvColor = ta.getColor(R.styleable.AmountView_btnTvColor, getResources().getColor(R.color.black));
         //背景
-        int btnDecreaseBg = obtainStyledAttributes.getResourceId(R.styleable.AmountView_btnLeftBg, R.drawable.btn_amount);
-        int btnIncreaseBg = obtainStyledAttributes.getResourceId(R.styleable.AmountView_btnRightBg, R.drawable.btn_amount);
-        int numTvBg = obtainStyledAttributes.getResourceId(R.styleable.AmountView_numTvBg, R.color.white);
+        int btnDecreaseBg = ta.getResourceId(R.styleable.AmountView_btnLeftBg, R.drawable.btn_amount);
+        int btnIncreaseBg = ta.getResourceId(R.styleable.AmountView_btnRightBg, R.drawable.btn_amount);
+        int numTvBg = ta.getResourceId(R.styleable.AmountView_numTvBg, R.color.white);
 
-        minValue = obtainStyledAttributes.getInt(R.styleable.AmountView_minValue, minValue);
-        minValueTip = TextUtils.isEmpty(obtainStyledAttributes.getString(R.styleable.AmountView_minValueTip))
+        minValue = ta.getInt(R.styleable.AmountView_minValue, minValue);
+        minValueTip = TextUtils.isEmpty(ta.getString(R.styleable.AmountView_minValueTip))
                 ? minValueTip
-                : obtainStyledAttributes.getString(R.styleable.AmountView_minValueTip);
-        maxValue = obtainStyledAttributes.getInt(R.styleable.AmountView_maxValue, maxValue);
-        maxValueTip = TextUtils.isEmpty(obtainStyledAttributes.getString(R.styleable.AmountView_maxValueTip))
+                : ta.getString(R.styleable.AmountView_minValueTip);
+        maxValue = ta.getInt(R.styleable.AmountView_maxValue, maxValue);
+        maxValueTip = TextUtils.isEmpty(ta.getString(R.styleable.AmountView_maxValueTip))
                 ? maxValueTip
-                : obtainStyledAttributes.getString(R.styleable.AmountView_maxValueTip);
-        step = obtainStyledAttributes.getInt(R.styleable.AmountView_step,step);
-        obtainStyledAttributes.recycle();
+                : ta.getString(R.styleable.AmountView_maxValueTip);
+        step = ta.getInt(R.styleable.AmountView_step,step);
+        ta.recycle();
 
         //-----------------增减按钮----------------------------------
         LayoutParams btnParams = new LayoutParams(btnWidth, LayoutParams.MATCH_PARENT);
