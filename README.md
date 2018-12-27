@@ -142,3 +142,23 @@ Add it in your module build.gradle
         app:sv_paint_width="4dp"/>
 ```
 ![SignatureView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/SignatureView.jpg)
+
+**8、自定义文本切换器***
+* TextSwitchButton：文本切换器
+```
+<com.qlh.sdk.myview.button.TextSwitchButton
+        android:id="@+id/tsb"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        app:tsb_bg_color="@color/grey_CC"
+        app:tsb_btn_color="@color/blue_275D9D"
+        app:tsb_left_text="出车"
+        app:tsb_right_text="收车"
+        app:tsb_shape="round"
+        app:tsb_text_size="@dimen/d13"
+        app:tsb_corner_radius="@dimen/d15"
+        app:tsb_btn_width="@dimen/d50"
+        app:tsb_text_normal_color="@color/blue_4499ff"
+        app:tsb_text_selected_color="@color/red_d10773" />
+```
+![TextSwitchButton](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/TextSwitchButton.gif)
