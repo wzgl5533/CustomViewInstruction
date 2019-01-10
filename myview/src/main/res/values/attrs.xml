@@ -2,8 +2,8 @@
 <resources>
     <!--输入框EditText-->
     <declare-styleable name="editTextStyle">
-        <attr name="edt_delete_icon_width" format="dimension" />//右边删除图标宽度
-        <attr name="edt_delete_icon_height" format="dimension" />//右边删除图标高度
+        <attr name="edt_delete_icon_width" format="dimension" /><!--右边删除图标宽度-->
+        <attr name="edt_delete_icon_height" format="dimension" /><!--右边删除图标高度-->
     </declare-styleable>
 
     <!--CircleImageView-->
@@ -125,5 +125,15 @@
             <enum name="round" value="1"/>
         </attr>
         <attr name="tsb_corner_radius" format="dimension"/>
+    </declare-styleable>
+
+    <!--复选按钮-->
+    <declare-styleable name="SmoothCheckBox">
+        <attr name="sc_duration" format="integer" /><!--动画持续时间-->
+        <attr name="sc_stroke_width" format="dimension" /><!--未选中时边框宽度-->
+        <attr name="sc_color_tick" format="color" /><!--对勾颜色-->
+        <attr name="sc_color_checked" format="color" /><!--选中时填充颜色-->
+        <attr name="sc_color_unchecked" format="color" /><!--未选中时填充颜色-->
+        <attr name="sc_color_unchecked_stroke" format="color" /><!--未选中时边框颜色-->
     </declare-styleable>
 </resources>

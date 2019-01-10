@@ -151,4 +151,13 @@
         app:tsb_text_selected_color="@color/red_d10773"
         android:layout_marginTop="@dimen/d50" />
 
+    <com.qlh.sdk.myview.checkbox.SmoothCheckBox
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:sc_stroke_width="2dp"
+        app:sc_color_checked="@color/colorAccent"
+        app:sc_color_unchecked="#0000FF"
+        app:sc_color_unchecked_stroke="#00FF00"
+        app:sc_color_tick="#FF0000"/>
+
 </LinearLayout>
