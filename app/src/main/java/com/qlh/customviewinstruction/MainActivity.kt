@@ -5,13 +5,17 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.qlh.customviewinstruction.adpater.SwipeRecycleAdapter
+import com.qlh.sdk.myview.app.MyView
 import com.qlh.sdk.myview.camera.CameraImpl
 import com.qlh.sdk.myview.camera.CameraView
+import com.qlh.sdk.myview.swipe.Attributes
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -21,14 +25,14 @@ import java.io.IOException
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val window = window
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
-            window.statusBarColor = Color.TRANSPARENT
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            val window = window
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+//            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+//            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+//            window.statusBarColor = Color.TRANSPARENT
+//        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         view_range_bar.setRectLineHeight(10)
@@ -100,7 +104,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         //签名
-        sign1()
+        //sign1()
 
         tsb.setLeftSelectedListener {
             Log.d("11111","left")
@@ -109,6 +113,9 @@ class MainActivity : AppCompatActivity() {
         tsb.setRightSelectedListener {
             Log.d("11111","right")
         }
+
+        //swipe
+        swipe()
     }
 
    private fun sign1(){
@@ -131,4 +138,15 @@ class MainActivity : AppCompatActivity() {
        }
 
    }
+
+    private fun swipe(){
+        val list = arrayListOf<String>()
+        for (i in 0..10){
+            list.add("条目$i")
+        }
+        val adapter = SwipeRecycleAdapter(list)
+        adapter.setMode(Attributes.Mode.Single)
+        swipe_rv.layoutManager = LinearLayoutManager(this)
+        swipe_rv.adapter =  adapter
+    }
 }

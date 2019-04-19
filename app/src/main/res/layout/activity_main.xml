@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--输入框-->
     <com.qlh.sdk.myview.edittext.MyClearEditText
         android:visibility="gone"
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         app:edt_delete_icon_width="@dimen/d20"
         app:edt_delete_icon_height="@dimen/d20"
         android:drawableRight="@drawable/delete"/>
+    <!--带边框的圆形图片-->
     <com.qlh.sdk.myview.imageview.CircleImageView
         android:visibility="gone"
         android:layout_width="@dimen/d100"
@@ -22,17 +24,7 @@
         app:civ_border_overlay="true"
         app:civ_fill_color="#00FF00"
         android:src="@drawable/live_room_bg"/>
-
-    <com.qlh.sdk.myview.imageview.CircleImageView
-        android:visibility="gone"
-        android:layout_width="@dimen/d100"
-        android:layout_height="@dimen/d100"
-        app:civ_border_width="@dimen/d10"
-        app:civ_border_color="#FF0000"
-        app:civ_border_overlay="false"
-        app:civ_fill_color="#00FF00"
-        android:src="@drawable/live_room_bg"/>
-
+    <!--数字按钮-->
     <com.qlh.sdk.myview.number.AmountView
         android:visibility="gone"
         android:layout_width="wrap_content"
@@ -51,6 +43,7 @@
         app:minValueTip="已经是最小值了~~"
         app:maxValueTip="已经是最大值了~~"
         app:step="1"/>
+    <!--倒计时按钮-->
     <com.qlh.sdk.myview.button.MyTimeButton
         android:visibility="gone"
         android:layout_width="wrap_content"
@@ -60,6 +53,7 @@
         app:textAfter="秒后重新获取验证码"
         android:background="@color/colorPrimary"
         app:timeLength="10"/>
+    <!--范围选择-->
     <com.qlh.sdk.myview.rangebar.RangeBarView
         android:visibility="gone"
         android:id="@+id/view_range_bar"
@@ -86,7 +80,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
-
+    <!--自定义相机-->
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
@@ -116,25 +110,32 @@
            android:layout_marginBottom="@dimen/d50"
            android:layout_alignParentBottom="true"/>
    </RelativeLayout>
+    <!--自定义签名-->
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:visibility="gone">
+       <com.qlh.sdk.myview.view.SignatureView
+           android:id="@+id/sign_view"
+           android:layout_width="match_parent"
+           android:layout_height="200dp"
+           app:sv_canvas_color="#FFFFFF"
+           app:sv_paint_color="@color/red_d10773"
+           app:sv_paint_width="4dp"/>
 
-    <com.qlh.sdk.myview.view.SignatureView
-        android:id="@+id/sign_view"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:sv_canvas_color="#FFFFFF"
-        app:sv_paint_color="@color/red_d10773"
-        app:sv_paint_width="4dp"/>
-
-    <Button
-        android:id="@+id/clear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="clear"/>
-    <Button
-        android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="save"/>
+       <Button
+           android:id="@+id/clear"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="clear"/>
+       <Button
+           android:id="@+id/save"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="save"/>
+   </LinearLayout>
+    <!--自定义文本切换器-->
     <com.qlh.sdk.myview.button.TextSwitchButton
         android:id="@+id/tsb"
         android:layout_width="100dp"
@@ -149,8 +150,9 @@
         app:tsb_btn_width="@dimen/d50"
         app:tsb_text_normal_color="@color/blue_4499ff"
         app:tsb_text_selected_color="@color/red_d10773"
-        android:layout_marginTop="@dimen/d50" />
-
+        android:layout_marginTop="@dimen/d50"
+        android:visibility="gone"/>
+    <!--自定义CheckBox-->
     <com.qlh.sdk.myview.checkbox.SmoothCheckBox
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -158,6 +160,12 @@
         app:sc_color_checked="@color/colorAccent"
         app:sc_color_unchecked="#0000FF"
         app:sc_color_unchecked_stroke="#00FF00"
-        app:sc_color_tick="#FF0000"/>
+        app:sc_color_tick="#FF0000"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/swipe_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

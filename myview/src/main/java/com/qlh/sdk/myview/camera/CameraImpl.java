@@ -22,7 +22,7 @@ import android.hardware.Camera;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.support.v4.util.SparseArrayCompat;
+import androidx.collection.SparseArrayCompat;
 import android.view.SurfaceHolder;
 import android.view.View;
 

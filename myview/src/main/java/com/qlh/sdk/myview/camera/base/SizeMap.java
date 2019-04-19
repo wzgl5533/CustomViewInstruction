@@ -16,7 +16,7 @@
 
 package com.qlh.sdk.myview.camera.base;
 
-import android.support.v4.util.ArrayMap;
+import androidx.collection.ArrayMap;
 
 import java.util.Set;
 import java.util.SortedSet;

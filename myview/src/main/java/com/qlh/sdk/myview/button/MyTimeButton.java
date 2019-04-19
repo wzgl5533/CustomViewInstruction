@@ -3,10 +3,9 @@ package com.qlh.sdk.myview.button;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatButton;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -14,10 +13,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.qlh.sdk.myview.R;
-import com.qlh.sdk.myview.app.App;
+import com.qlh.sdk.myview.app.MyView;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -133,10 +131,10 @@ public class MyTimeButton extends AppCompatButton implements OnClickListener {
      * 和activity的onDestroy()方法同步
      */
     public void onDestroy() {
-        if (App.map == null)
-            App.map = new HashMap<>();
-        App.map.put(TIME, time);
-        App.map.put(CTIME, System.currentTimeMillis());
+        if (MyView.map == null)
+            MyView.map = new HashMap<>();
+        MyView.map.put(TIME, time);
+        MyView.map.put(CTIME, System.currentTimeMillis());
         clearTimer();
         Log.e("yung", "onDestroy");
     }
@@ -155,14 +153,14 @@ public class MyTimeButton extends AppCompatButton implements OnClickListener {
      * 和activity的onCreate()方法同步
      */
     public void onCreate(Bundle bundle) {
-        Log.e("yung", App.map + "");
-        if (App.map == null)
+        Log.e("yung", MyView.map + "");
+        if (MyView.map == null)
             return;
-        if (App.map.size() <= 0)// 这里表示没有上次未完成的计时
+        if (MyView.map.size() <= 0)// 这里表示没有上次未完成的计时
             return;
-        long time = System.currentTimeMillis() - App.map.get(CTIME)
-                - App.map.get(TIME);
-        App.map.clear();
+        long time = System.currentTimeMillis() - MyView.map.get(CTIME)
+                - MyView.map.get(TIME);
+        MyView.map.clear();
         if (time > 0)
             return;
         else {
