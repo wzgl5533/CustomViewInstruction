@@ -34,6 +34,12 @@ Add it in your module build.gradle
         app:edt_delete_icon_height="@dimen/d20"//删除图标高度
         android:drawableRight="@drawable/delete"/>//删除图标
 ```
+#### Attrs 属性
+|attr|format|description|
+|---|:---|:---:|
+|edt_delete_icon_width|dimension|右边删除图标宽度|
+|edt_delete_icon_height|dimension|右边删除图标高度|
+
 ![ClearEditText](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/MyClearEditText.gif)
 
 **2、图片**
@@ -48,6 +54,14 @@ Add it in your module build.gradle
         app:civ_fill_color="#00FF00"//填充空白颜色
         android:src="@drawable/live_room_bg"/>
 ```
+#### Attrs 属性
+|attr|format|description|
+|---|:---|:---:|
+|civ_border_width|dimension|边框宽度|
+|civ_border_color|color|边框颜色|
+|civ_border_overlay|boolean|边框覆盖|
+|civ_fill_color|color|图片过小时，周围的填充色|
+
 ![CircleImageView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/CircleImageView.jpg)
 
 **3、数字按钮**
@@ -87,6 +101,13 @@ Add it in your module build.gradle
         app:timeLength="10"//总时长
 	/>
 ```
+#### Attrs 属性
+|attr|format|description|
+|---|:---|:---:|
+|textBefore|string|点击之前显示文本|
+|textAfter|string|点击之后显示文本|
+|timeLength|integer|倒计时时间|
+
 ![MyTimeButton](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/MyTimeButton.gif)
 
 **5、范围选择**
@@ -176,7 +197,18 @@ Add it in your module build.gradle
         app:sc_color_tick="#FF0000"
         android:visibility="gone"/>
 ```
+#### Attrs 属性
+|attr|format|description|
+|---|:---|:---:|
+|duration|integer|动画持续时间|
+|sc_stroke_width|dimension|未选中时边框宽度|
+|sc_color_tick|color|对勾颜色|
+|sc_color_checked|color|选中时填充颜色|
+|sc_color_unchecked|color|未选中时填充颜色|
+|sc_color_unchecked_stroke|color|未选中时边框颜色|
 
+
+![SmoothCheckBox](https://github.com/andyxialm/SmoothCheckBox/blob/master/art/smoothcb.gif?raw=true)
 
 **10、Item侧滑菜单**
 * SwipeLayout：文本切换器
