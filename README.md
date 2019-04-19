@@ -120,7 +120,7 @@ Add it in your module build.gradle
 ```
 ![RangeBarView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/RangeBarView.gif)
 
-**6、自定义相机（解决拍照旋转问题）***
+**6、自定义相机（解决拍照旋转问题）**
 * CameraView：提供简洁的拍照画面，可以自定义操作界面，亦可结合[自定义裁剪框使用](https://github.com/wzgl5533/CropView)
 ```
 <com.qlh.sdk.myview.camera.CameraView
@@ -130,7 +130,7 @@ Add it in your module build.gradle
 ```
 ![CameraView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/CameraView.jpg)
 
-**7、自定义签名***
+**7、自定义签名**
 * SignatureView：自定义签名
 ```
 <com.qlh.sdk.myview.view.SignatureView
@@ -143,7 +143,7 @@ Add it in your module build.gradle
 ```
 ![SignatureView](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/SignatureView.jpg)
 
-**8、自定义文本切换器***
+**8、自定义文本切换器**
 * TextSwitchButton：文本切换器
 ```
 <com.qlh.sdk.myview.button.TextSwitchButton
@@ -162,3 +162,68 @@ Add it in your module build.gradle
         app:tsb_text_selected_color="@color/red_d10773" />
 ```
 ![TextSwitchButton](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/TextSwitchButton.gif)
+
+**9、自定义CheckBox**
+* SmoothCheckBox：CheckBox
+```
+<com.qlh.sdk.myview.checkbox.SmoothCheckBox
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:sc_stroke_width="2dp"
+        app:sc_color_checked="@color/colorAccent"
+        app:sc_color_unchecked="#0000FF"
+        app:sc_color_unchecked_stroke="#00FF00"
+        app:sc_color_tick="#FF0000"
+        android:visibility="gone"/>
+```
+
+
+**10、Item侧滑菜单**
+* SwipeLayout：文本切换器
+```
+<com.qlh.sdk.myview.swipe.SwipeLayout
+    android:id="@+id/swipe_root"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d40">
+    <!--按钮-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn"
+            android:layout_width="@dimen/d40"
+            android:layout_height="match_parent"
+            android:background="@color/blue_4499ff"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="按钮"/>
+
+        <TextView
+            android:id="@+id/btn1"
+            android:layout_width="@dimen/d40"
+            android:layout_height="match_parent"
+            android:background="@color/blue_4499ff"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="按钮1"/>
+    </LinearLayout>
+    <!--内容-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red_d10773">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/d20"
+            android:text="内容"/>
+    </LinearLayout>
+</com.qlh.sdk.myview.swipe.SwipeLayout>
+```
+![SwipeLayout](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/swipelayout.gif)
