@@ -107,7 +107,7 @@ public class SmoothCheckBox extends View implements Checkable {
         mFloorColor = ta.getColor(R.styleable.SmoothCheckBox_sc_color_unchecked_stroke, COLOR_FLOOR_UNCHECKED);
         mCheckedColor = ta.getColor(R.styleable.SmoothCheckBox_sc_color_checked, COLOR_CHECKED);
         mUnCheckedColor = ta.getColor(R.styleable.SmoothCheckBox_sc_color_unchecked, COLOR_UNCHECKED);
-        mStrokeWidth = ta.getDimensionPixelSize(R.styleable.SmoothCheckBox_sc_stroke_width, QLHUtils.dp2px(getContext(), 0));
+        mStrokeWidth = ta.getDimensionPixelSize(R.styleable.SmoothCheckBox_sc_stroke_width, QLHUtils.INSTANCE.dp2px(getContext(), 0));
         ta.recycle();
 
         mFloorUnCheckedColor = mFloorColor;
@@ -219,7 +219,7 @@ public class SmoothCheckBox extends View implements Checkable {
     }
 
     private int measureSize(int measureSpec) {
-        int defSize = QLHUtils.dp2px(getContext(), DEF_DRAW_SIZE);
+        int defSize = QLHUtils.INSTANCE.dp2px(getContext(), DEF_DRAW_SIZE);
         int specSize = MeasureSpec.getSize(measureSpec);
         int specMode = MeasureSpec.getMode(measureSpec);
 

@@ -37,6 +37,13 @@ dependencies {
     api 'androidx.recyclerview:recyclerview:1.0.0'
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //权限管理
+    api "com.github.tbruyelle:rxpermissions:$rxpermissions_version"
+    api "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+    api "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
+    api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
 }
 

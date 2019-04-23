@@ -10,19 +10,28 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qlh.customviewinstruction.adpater.SwipeRecycleAdapter
 import com.qlh.sdk.myview.app.MyView
+import com.qlh.sdk.myview.base.BaseActivity
 import com.qlh.sdk.myview.camera.CameraImpl
 import com.qlh.sdk.myview.camera.CameraView
+import com.qlh.sdk.myview.loading.DefaultLoadingAdapter
 import com.qlh.sdk.myview.swipe.Attributes
+import com.qlh.sdk.myview.utils.Gloading
 import com.tbruyelle.rxpermissions2.RxPermissions
+import io.reactivex.Flowable
 import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.IOException
+import java.util.concurrent.TimeUnit
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -33,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 //            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
 //            window.statusBarColor = Color.TRANSPARENT
 //        }
+        Gloading.initDefault(DefaultLoadingAdapter())
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         view_range_bar.setRectLineHeight(10)
@@ -67,10 +77,10 @@ class MainActivity : AppCompatActivity() {
             cam.takePicture()
         }
         switchca.setOnClickListener {
-            if (cam.facing == CameraView.FACING_BACK){
+            if (cam.facing == CameraView.FACING_BACK) {
                 cam.facing = CameraView.FACING_FRONT
                 cam.flash = CameraView.FLASH_ON
-            }else if (cam.facing == CameraView.FACING_FRONT){
+            } else if (cam.facing == CameraView.FACING_FRONT) {
                 cam.facing = CameraView.FACING_BACK
                 cam.flash = CameraView.FLASH_OFF
             }
@@ -86,11 +96,11 @@ class MainActivity : AppCompatActivity() {
                 Log.e("11111", "onCameraClosed")
             }
 
-            override fun onPictureTaken(camera: CameraImpl?, data: ByteArray?,rotation:Int) {
-                super.onPictureTaken(camera, data,rotation)
+            override fun onPictureTaken(camera: CameraImpl?, data: ByteArray?, rotation: Int) {
+                super.onPictureTaken(camera, data, rotation)
                 Log.e("11111", "onPictureTaken")
                 if (data != null) {
-                    val bitmap = cam.adjustBitmap(data,true)
+                    val bitmap = cam.adjustBitmap(data, true)
                     img.setImageBitmap(bitmap)
                     cam.saveBitmap(bitmap)
 
@@ -107,46 +117,50 @@ class MainActivity : AppCompatActivity() {
         //sign1()
 
         tsb.setLeftSelectedListener {
-            Log.d("11111","left")
+            Log.d("11111", "left")
         }
 
         tsb.setRightSelectedListener {
-            Log.d("11111","right")
+            Log.d("11111", "right")
         }
 
         //swipe
-        swipe()
+        //swipe()
     }
 
-   private fun sign1(){
+    private fun sign1() {
 
-    sign_view.setTouch {
-        Log.d("11111",it.toString())
+        sign_view.setTouch {
+            Log.d("11111", it.toString())
+        }
+
+        clear.setOnClickListener {
+            sign_view.clear()
+        }
+        save.setOnClickListener {
+            if (sign_view.signature) {
+                try {
+                    sign_view.save("/sdcard/qm.png", true, 10, Bitmap.CompressFormat.PNG)
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
     }
 
-       clear.setOnClickListener {
-           sign_view.clear()
-       }
-       save.setOnClickListener {
-           if (sign_view.signature){
-               try {
-                   sign_view.save("/sdcard/qm.png", true, 10,Bitmap.CompressFormat.PNG)
-               }catch (e:IOException){
-                   e.printStackTrace()
-               }
-           }
-       }
-
-   }
-
-    private fun swipe(){
+    private fun swipe() {
         val list = arrayListOf<String>()
-        for (i in 0..10){
+        for (i in 0..10) {
             list.add("条目$i")
         }
         val adapter = SwipeRecycleAdapter(list)
         adapter.setMode(Attributes.Mode.Single)
         swipe_rv.layoutManager = LinearLayoutManager(this)
-        swipe_rv.adapter =  adapter
+        swipe_rv.adapter = adapter
+    }
+    override fun obtainViewModel(): MainViewModel? {
+
+        return ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 }

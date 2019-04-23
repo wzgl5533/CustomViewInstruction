@@ -341,7 +341,7 @@ public class CameraView extends FrameLayout {
      * 保存图片
      **/
     public boolean saveBitmap(Bitmap bitmap) {
-        String name = DateUtil.formatDateToSecond(new Date());
+        String name = DateUtil.INSTANCE.formatDateToSecond(new Date());
         File file = new File(AppConstant.PIC_DIC, name + ".jpg");
         return ImageUtils.save(bitmap, file, Bitmap.CompressFormat.JPEG);
     }

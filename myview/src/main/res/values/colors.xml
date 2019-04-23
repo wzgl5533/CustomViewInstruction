@@ -11,4 +11,6 @@
     <color name="grey_CD">#CDCDCD</color>
     <color name="red_d10773">#D10773</color>
     <color name="blue_4499ff">#4499FF</color>
+    <color name="base_gray_3C">#3C3C3C</color>
+    <color name="base_transparent">#00000000</color>
 </resources>

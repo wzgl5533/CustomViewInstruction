@@ -28,4 +28,8 @@
         <item name="cv_autoFocus">true</item>
         <item name="cv_flash">auto</item>
     </style>
+
+    <style name="baseLargerProgressBar" parent="@android:style/Widget.ProgressBar.Large.Inverse">
+        <item name="android:indeterminateDrawable">@drawable/base_progress_loading</item>
+    </style>
 </resources>
