@@ -1,5 +1,4 @@
-### CustomViewInstruction
-
+### CustomViewInstruction [![](https://jitpack.io/v/wzgl5533/CustomViewInstruction.svg)](https://jitpack.io/#wzgl5533/CustomViewInstruction)
 ### 简介
 
 本库拆分于CustomView库，主要用于自己的项目，收集很多优秀开源的组件，对其进行封装和归纳，方便使用，再此感谢，各位小伙伴也可以使用或者修改维护自己的库，喜欢的可以打个星。
