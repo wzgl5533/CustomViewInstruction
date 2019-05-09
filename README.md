@@ -258,3 +258,22 @@ Add it in your module build.gradle
 </com.qlh.sdk.myview.swipe.SwipeLayout>
 ```
 ![SwipeLayout](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/swipelayout.gif)
+
+**11、无边界文本**
+* NoPaddingTextView：无边界文本
+```
+<com.qlh.sdk.myview.text.NoPaddingTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Hello"
+        android:textSize="50sp"
+        app:removeDefaultPadding="true"/>
+```
+ 
+ #### Attrs 属性
+|attr|format|description|
+|---|:---|:---:|
+|removeDefaultPadding|boolean|是否去除字体内边距|
+
+![NoPaddingTextView ](https://mmbiz.qpic.cn/mmbiz_png/v1LbPPWiaSt5r0MYCV9kLlia96JDyBd3YbUkmqnGohcYSXmfTKuNMibRhCOk4uQXdymBmIFzPnOZCicm9JddyDddmQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
