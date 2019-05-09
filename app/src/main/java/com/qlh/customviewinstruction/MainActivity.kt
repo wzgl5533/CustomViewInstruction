@@ -2,19 +2,12 @@ package com.qlh.customviewinstruction
 
 import android.Manifest
 import android.graphics.Bitmap
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
-import android.view.View
-import android.view.WindowManager
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qlh.customviewinstruction.adpater.SwipeRecycleAdapter
-import com.qlh.sdk.myview.app.MyView
 import com.qlh.sdk.myview.base.BaseActivity
 import com.qlh.sdk.myview.camera.CameraImpl
 import com.qlh.sdk.myview.camera.CameraView
@@ -22,14 +15,10 @@ import com.qlh.sdk.myview.loading.DefaultLoadingAdapter
 import com.qlh.sdk.myview.swipe.Attributes
 import com.qlh.sdk.myview.utils.Gloading
 import com.tbruyelle.rxpermissions2.RxPermissions
-import io.reactivex.Flowable
 import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.IOException
-import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity<MainViewModel>() {
 

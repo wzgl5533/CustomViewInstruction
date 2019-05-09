@@ -155,4 +155,9 @@
         </attr>
         <attr name="clickToClose" format="boolean" />
     </declare-styleable>
+
+    <!--无内边距TextView-->
+    <declare-styleable name="NoPaddingTextView">
+        <attr name="removeDefaultPadding" format="boolean"/>
+    </declare-styleable>
 </resources>
