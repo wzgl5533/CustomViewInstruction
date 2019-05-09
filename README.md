@@ -277,3 +277,5 @@ Add it in your module build.gradle
 |removeDefaultPadding|boolean|是否去除字体内边距|
 
 ![NoPaddingTextView ](https://mmbiz.qpic.cn/mmbiz_png/v1LbPPWiaSt5r0MYCV9kLlia96JDyBd3YbUkmqnGohcYSXmfTKuNMibRhCOk4uQXdymBmIFzPnOZCicm9JddyDddmQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
+[公众号文章](https://mp.weixin.qq.com/s/B6lev4UnWh4Vh-dpY6ndpw)
