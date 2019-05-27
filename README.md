@@ -210,7 +210,7 @@ Add it in your module build.gradle
 ![SmoothCheckBox](https://github.com/andyxialm/SmoothCheckBox/blob/master/art/smoothcb.gif?raw=true)
 
 **10、Item侧滑菜单**
-* SwipeLayout：文本切换器
+* SwipeLayout：侧滑菜单
 ```
 <com.qlh.sdk.myview.swipe.SwipeLayout
     android:id="@+id/swipe_root"
