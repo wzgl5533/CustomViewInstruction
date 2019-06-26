@@ -175,6 +175,12 @@
         android:textColor="@color/colorPrimary"
         android:text="Hello"
         android:textSize="@dimen/d20"
+        android:visibility="gone"
         app:removeDefaultPadding="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/loop_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

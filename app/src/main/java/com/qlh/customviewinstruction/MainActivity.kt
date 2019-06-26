@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.qlh.customviewinstruction.adpater.MyAdapter
 import com.qlh.customviewinstruction.adpater.SwipeRecycleAdapter
 import com.qlh.sdk.myview.base.BaseActivity
 import com.qlh.sdk.myview.camera.CameraImpl
@@ -14,6 +15,8 @@ import com.qlh.sdk.myview.camera.CameraView
 import com.qlh.sdk.myview.loading.DefaultLoadingAdapter
 import com.qlh.sdk.myview.swipe.Attributes
 import com.qlh.sdk.myview.utils.Gloading
+import com.qlh.sdk.myview.utils.LooperHorizontalLayoutManager
+import com.qlh.sdk.myview.utils.LooperVerticalLayoutManager
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -31,7 +34,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
 //            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
 //            window.statusBarColor = Color.TRANSPARENT
 //        }
-        Gloading.initDefault(DefaultLoadingAdapter())
+        //Gloading.initDefault(DefaultLoadingAdapter())
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         view_range_bar.setRectLineHeight(10)
@@ -115,6 +118,8 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
         //swipe
         //swipe()
+        loopRv()
+
     }
 
     private fun sign1() {
@@ -147,6 +152,14 @@ class MainActivity : BaseActivity<MainViewModel>() {
         adapter.setMode(Attributes.Mode.Single)
         swipe_rv.layoutManager = LinearLayoutManager(this)
         swipe_rv.adapter = adapter
+    }
+
+    private fun loopRv(){
+
+        loop_rv.adapter = MyAdapter()
+        val looperManager = LooperHorizontalLayoutManager()
+        looperManager.setLooperEnable(true)
+        loop_rv.layoutManager = looperManager
     }
     override fun obtainViewModel(): MainViewModel? {
 
