@@ -281,6 +281,8 @@ Add it in your module build.gradle
 [公众号文章](https://mp.weixin.qq.com/s/B6lev4UnWh4Vh-dpY6ndpw)
 
 **12、RecyclerView无限循环滚动的完美实现方案**
+
 * LooperHorizontalLayoutManager：RecyclerView无限循环滚动
+
 ![LooperHorizontalLayoutManager ](https://github.com/wzgl5533/CustomViewInstruction/blob/master/myview/screenshot/loopRv.gif)
 
