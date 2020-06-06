@@ -127,18 +127,18 @@ public class SignatureView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 touchDown(event);
-                if (touch != null) touch.OnTouch(Constant.ACTION_DOWN);
+                if (touch != null) touch.OnTouch(Constant.INSTANCE.getACTION_DOWN());
                 break;
             case MotionEvent.ACTION_MOVE:
                 isSignature = true;
                 touchMove(event);
-                if (touch != null) touch.OnTouch(Constant.ACTION_MOVE);
+                if (touch != null) touch.OnTouch(Constant.INSTANCE.getACTION_MOVE());
                 break;
             case MotionEvent.ACTION_UP:
                 //将路径画到bitmap中，即一次笔画完成才去更新bitmap，而手势轨迹是实时显示在画板上的。
                 cacheCanvas.drawPath(mPath, mGesturePaint);
                 mPath.reset();
-                if (touch != null) touch.OnTouch(Constant.ACTION_UP);
+                if (touch != null) touch.OnTouch(Constant.INSTANCE.getACTION_UP());
                 break;
         }
         // 更新绘制

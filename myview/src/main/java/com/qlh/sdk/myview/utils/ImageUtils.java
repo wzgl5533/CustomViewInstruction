@@ -11,7 +11,10 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * 作者：QLH on 2018/10/8 10:09
@@ -234,6 +237,39 @@ public class ImageUtils {
         if (isMirrorRotate && face == CameraView.FACING_FRONT){
             bitmap = mirrorRotate(bitmap);
         }
+        return bitmap;
+    }
+
+
+    /**
+     * 根据一个网络连接(String)获取bitmap图像
+     *
+     * @param imageUrl
+     * @return bitmap
+     */
+    public static Bitmap getBitmap(String imageUrl){
+
+        Log.d(TAG,"getbitmap:" + imageUrl);
+        // 显示网络上的图片
+        Bitmap bitmap = null;
+        try {
+
+            URL myFileUrl = new URL(imageUrl);
+            HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            bitmap = BitmapFactory.decodeStream(is);
+            is.close();
+            Log.e(TAG, "image download finished." + imageUrl);
+        }catch (OutOfMemoryError e){
+            e.printStackTrace();
+            bitmap = null;
+        }catch (IOException e){
+            e.printStackTrace();
+            Log.v(TAG, "getbitmap bmp fail---");
+            bitmap = null;
+        }
+
         return bitmap;
     }
 }
