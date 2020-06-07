@@ -36,8 +36,9 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
     private var maxPicSize: Camera.Size? = null
     private val sizeComparator = CameraSizeComparator()
     private var mSensorControler: SensorControler? = null
+    private var root :View? = null
 
-    abstract fun getLayoutId():Int
+    abstract fun getLayoutId():View
 
     override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {}
 
@@ -47,7 +48,8 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
+        root = getLayoutId()
+        setContentView(root)
         initView()
     }
 
@@ -70,7 +72,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
         val detectScreenOrientation = DetectScreenOrientation(this)
         detectScreenOrientation.enable()
 
-        mHolder = (findViewById<SurfaceView>(R.id.surface_view)).holder
+        mHolder = root?.findViewById<SurfaceView>(R.id.surface_view)?.holder
         mHolder?.apply {
             addCallback(this@CameraBaseActivity)
             setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS)
@@ -313,8 +315,8 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
                             originalBitmap.width
                                     .toString() + "----" + originalBitmap.height)
                     val frameRect = Rect()
-                    val fixCutView = findViewById<View>(R.id.fix_cut_view)
-                    fixCutView.getGlobalVisibleRect(frameRect)
+                    val fixCutView = root?.findViewById<View>(R.id.fix_cut_view)
+                    fixCutView?.getGlobalVisibleRect(frameRect)
                     cropBitmap = BitmapUtils.getCropPicture(originalBitmap,
                             ScreenUtils.getScreenWidth(),
                             ScreenUtils.getScreenHeight(), frameRect)
