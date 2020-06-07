@@ -7,5 +7,5 @@ import android.graphics.Bitmap
  *描述：
  */
 interface TakePictureSuccess {
-    fun success(bitmap: Bitmap?)
+    fun success(cropBitmap: Bitmap?)
 }

@@ -30,7 +30,6 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
     private var cameraPosition =
             Camera.CameraInfo.CAMERA_FACING_BACK //1:采集指纹的前置摄像头. 0:拍照的后置摄像头.
     private var isGranted = false
-    private var cropBitmap: Bitmap? = null//最终拍照的裁剪图片
     private var mHolder: SurfaceHolder? = null
     private var maxPreSize: Camera.Size? = null
     private var maxPicSize: Camera.Size? = null
@@ -318,7 +317,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
                     val frameRect = Rect()
                     val fixCutView = root?.findViewById<View>(R.id.fix_cut_view)
                     fixCutView?.getGlobalVisibleRect(frameRect)
-                    cropBitmap = BitmapUtils.getCropPicture(originalBitmap,
+                    val cropBitmap = BitmapUtils.getCropPicture(originalBitmap,
                             ScreenUtils.getScreenWidth(),
                             ScreenUtils.getScreenHeight(), frameRect)
                     //BitmapUtils.saveBitmap(this, originalBitmap)
