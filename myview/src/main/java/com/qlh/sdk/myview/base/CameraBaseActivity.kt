@@ -71,6 +71,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
     private fun initView (){
         val detectScreenOrientation = DetectScreenOrientation(this)
         detectScreenOrientation.enable()
+        mSensorControler = SensorControler.getInstance(this)
 
         mHolder = root?.findViewById<SurfaceView>(R.id.surface_view)?.holder
         mHolder?.apply {
