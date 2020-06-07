@@ -181,6 +181,30 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/loop_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <!--svg动画-->
+    <ImageView
+        android:id="@+id/svg_iv"
+        android:clickable="true"
+        android:layout_width="@dimen/d300"
+        android:layout_height="@dimen/d300"
+        android:visibility="visible"/>
+    <Button
+        android:id="@+id/svg_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="svg动画"
+        android:visibility="visible"/>
+
+    <com.qlh.customviewinstruction.practice.Pie
+        android:layout_width="@dimen/d300"
+        android:layout_height="@dimen/d300"
+        android:visibility="gone"/>
+    <com.qlh.customviewinstruction.practice.Pie1
+        android:layout_width="600px"
+        android:layout_height="600px"
+        android:visibility="gone"/>
 
 </LinearLayout>

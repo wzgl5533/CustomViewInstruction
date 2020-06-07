@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="sequentially">
+    <objectAnimator android:duration="600"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="strokeColor"
+        android:valueType="colorType"
+        android:valueFrom="#C2BFBF"
+        android:valueTo="#C2BF"/>
+
+    <objectAnimator android:duration="600"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="strokeColor"
+        android:valueType="colorType"
+        android:valueFrom="#C2BF"
+        android:valueTo="#FF00"/>
+
+    <objectAnimator android:duration="600"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="strokeColor"
+        android:valueType="colorType"
+        android:valueFrom="#F00"
+        android:valueTo="#0F0"/>
+
+    <objectAnimator android:duration="600"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="strokeColor"
+        android:valueType="colorType"
+        android:valueFrom="#0F0"
+        android:valueTo="#00F"/>
+
+</set>

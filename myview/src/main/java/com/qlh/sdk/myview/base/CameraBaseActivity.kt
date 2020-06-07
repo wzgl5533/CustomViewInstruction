@@ -9,13 +9,15 @@ import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.blankj.utilcode.util.ImageUtils
-import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ScreenUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.qlh.sdk.myview.R
 import com.qlh.sdk.myview.callback.TakePictureSuccess
 import com.qlh.sdk.myview.utils.BitmapUtils
 import com.tbruyelle.rxpermissions2.RxPermissions
+import java.util.*
+import kotlin.Comparator
+import kotlin.math.abs
 
 /**
  *作者：QLH on 2020-06-06
@@ -30,6 +32,10 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
     private var isGranted = false
     private var cropBitmap: Bitmap? = null//最终拍照的裁剪图片
     private var mHolder: SurfaceHolder? = null
+    private var maxPreSize: Camera.Size? = null
+    private var maxPicSize: Camera.Size? = null
+    private val sizeComparator = CameraSizeComparator()
+    private var mSensorControler: SensorControler? = null
 
     abstract fun getLayoutId():Int
 
@@ -43,6 +49,21 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
         initView()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mSensorControler?.let {
+            it.onStart()
+            it.setCameraFocusListener {
+                focus()
+            }
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mSensorControler?.onStop()
     }
 
     private fun initView (){
@@ -73,10 +94,10 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
         mCamera?.release() //释放资源
         mCamera = null //取消原来摄像头
         cameraPosition = if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_BACK) { //此时后置
-            Log.i(TAG, cameraPosition.toString() + "BACK")
+            Log.e(TAG, cameraPosition.toString() + "BACK")
             Camera.CameraInfo.CAMERA_FACING_FRONT
         } else { //此时前置
-            Log.i(TAG, cameraPosition.toString() + "For")
+            Log.e(TAG, cameraPosition.toString() + "For")
             Camera.CameraInfo.CAMERA_FACING_BACK
         }
         initCamera()
@@ -128,11 +149,25 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
             mCamera?.setDisplayOrientation(result)
 
             //parameters.setRotation(result);
-            parameters?.pictureFormat = PixelFormat.JPEG
-            parameters?.setPictureSize(ScreenUtils.getScreenHeight(), ScreenUtils.getScreenWidth())
-            parameters?.setPreviewSize(ScreenUtils.getScreenHeight(), ScreenUtils.getScreenWidth())
-            mCamera?.parameters = parameters
-            mCamera?.startPreview()
+
+            parameters?.apply {
+                getPreSize(this)
+                pictureFormat = PixelFormat.JPEG
+                focusMode = Camera.Parameters.FOCUS_MODE_AUTO
+                Log.e(TAG,"${ScreenUtils.getScreenHeight()}---${ScreenUtils.getScreenWidth()}")
+                if (isSupportScreenPicture(getPicSize(this))
+                        && isSupportScreenPreView(getPreSize(this))
+                ) {
+                    setPictureSize(ScreenUtils.getScreenHeight(), ScreenUtils.getScreenWidth())
+                    setPreviewSize(ScreenUtils.getScreenHeight(), ScreenUtils.getScreenWidth())
+                } else {//如果没有和屏幕一致的，找到预览和图片与屏幕比例一致的
+                    maxPicSize?.let { setPictureSize(it.width, it.height) }
+                    maxPreSize?.let { setPreviewSize(it.width, it.height) }
+                }
+                mCamera?.parameters = this
+                mCamera?.startPreview()
+                focus()
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -154,8 +189,98 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
     }
 
     //判断是否授权
-    private fun isGranted(): Boolean {
+     fun isGranted(): Boolean {
         return isGranted
+    }
+
+    /**
+     * 对焦，在CameraActivity中触摸对焦或者自动对焦
+     */
+    fun focus() {
+        mCamera?.let {
+            try {
+                it.autoFocus(null)
+            }catch (e:Exception){
+                e.printStackTrace()
+            }
+        }
+    }
+
+    /**
+     * 获取相机能支持的预览分辨率
+     */
+    private fun getPreSize(parameters: Camera.Parameters): List<Camera.Size> {
+        val preSize =
+                parameters.supportedPreviewSizes
+        Collections.sort(preSize, sizeComparator)
+        val screenScale = ScreenUtils.getScreenHeight() * 1.0 / ScreenUtils.getScreenWidth()
+        maxPreSize = preSize[0]
+        for (size in preSize) {
+            Log.e(TAG, size.width.toString() + "--pre--" + size.height)
+        }
+        preSize.forEach {
+            //需找预览比例最接近屏幕比例的
+            if (abs(it.width * 1.0 / it.height - screenScale) <
+                    abs(maxPreSize!!.width * 1.0 / maxPreSize!!.height - screenScale)) {
+                maxPreSize = it
+                Log.e(TAG,maxPreSize?.toString())
+                return@forEach
+            }
+        }
+        return preSize
+    }
+
+    //拍照是否支持屏幕分辨率
+    private fun isSupportScreenPicture(picSize: List<Camera.Size>): Boolean {
+        var isSupport = false
+        val height = ScreenUtils.getScreenHeight()
+        val width = ScreenUtils.getScreenWidth()
+        for (size in picSize) {
+            if (size.width == height && size.height == width) {
+                isSupport = true
+                break
+            }
+        }
+        return isSupport
+    }
+
+    /**
+     * 获取相机能支持的拍照分辨率
+     */
+    private fun getPicSize(parameters: Camera.Parameters): List<Camera.Size> {
+        val picSize =
+                parameters.supportedPictureSizes
+        Collections.sort(picSize, sizeComparator)
+        val screenScale = ScreenUtils.getScreenHeight() * 1.0 / ScreenUtils.getScreenWidth()
+        maxPicSize = picSize[0]
+        for (size in picSize) {
+            Log.e(TAG, size.width.toString() + "--pic--" + size.height)
+        }
+        picSize.forEach {
+            //需找预览比例最接近屏幕比例的
+            if (abs(it.width * 1.0 / it.height - screenScale) <
+                    abs(maxPicSize!!.width * 1.0 / maxPicSize!!.height - screenScale)) {
+                maxPicSize = it
+                Log.e(TAG,maxPicSize?.toString())
+                return@forEach
+            }
+        }
+
+        return picSize
+    }
+
+    //预览图是否支持屏幕分辨率
+    private fun isSupportScreenPreView(preSize: List<Camera.Size>): Boolean {
+        var isSupport = false
+        val height = ScreenUtils.getScreenHeight()
+        val width = ScreenUtils.getScreenWidth()
+        for (size in preSize) {
+            if (size.width == height && size.height == width) {
+                isSupport = true
+                break
+            }
+        }
+        return isSupport
     }
 
     /**
@@ -168,7 +293,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
                 mCamera?.takePicture(Camera.ShutterCallback { }, null, null, Camera.PictureCallback { data, camera ->
                     var originalBitmap =
                             BitmapFactory.decodeByteArray(data, 0, data.size)
-                    LogUtils.d(TAG,
+                    Log.e(TAG,
                             originalBitmap.width.toString() + "--original--" + originalBitmap.height)
 
                     //前置图片顺时针旋转180度加镜像翻转
@@ -217,6 +342,22 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
                 setCameraParams()
             } else if (orientation in 81..99) {
                 setCameraParams()
+            }
+        }
+    }
+
+    private inner class CameraSizeComparator : Comparator<Camera.Size> {
+        override fun compare(o1: Camera.Size, o2: Camera.Size): Int {
+            return when {
+                o1.width == o2.width -> {
+                    0
+                }
+                o1.width < o2.width -> {
+                    1
+                }
+                else -> {
+                    -1
+                }
             }
         }
     }

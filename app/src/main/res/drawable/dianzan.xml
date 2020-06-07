@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1024dp"
+    android:height="1024dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+
+
+    <path
+        android:name="shou"
+        android:fillColor="#CCCCCC"
+        android:pathData="M36.283825 952.096606c-19.884873
+0-36.030254-16.145381-36.030254-35.92954L0.253571 412.350818c0-19.784159
+16.145381-35.92954 36.030254-35.92954 19.784159 0 36.026225 16.044667 36.026225
+35.92954l0 503.816248C72.212358 935.951225 56.168698 952.096606 36.283825
+952.096606L36.283825 952.096606zM900.682592 376.422285" />
+    <path
+        android:name="hua"
+        android:pathData="
+            M0,0
+            L100,100"
+        android:strokeColor="#C2BFBF"
+        android:strokeLineCap="round"
+        android:strokeWidth="60"/>
+</vector>

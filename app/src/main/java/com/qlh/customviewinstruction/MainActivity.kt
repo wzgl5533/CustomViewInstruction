@@ -2,21 +2,22 @@ package com.qlh.customviewinstruction
 
 import android.Manifest
 import android.graphics.Bitmap
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.qlh.customviewinstruction.adpater.MyAdapter
 import com.qlh.customviewinstruction.adpater.SwipeRecycleAdapter
 import com.qlh.sdk.myview.base.BaseActivity
 import com.qlh.sdk.myview.camera.CameraImpl
 import com.qlh.sdk.myview.camera.CameraView
-import com.qlh.sdk.myview.loading.DefaultLoadingAdapter
 import com.qlh.sdk.myview.swipe.Attributes
-import com.qlh.sdk.myview.utils.Gloading
 import com.qlh.sdk.myview.utils.LooperHorizontalLayoutManager
-import com.qlh.sdk.myview.utils.LooperVerticalLayoutManager
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -118,7 +119,11 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
         //swipe
         //swipe()
-        loopRv()
+        //loopRv()
+       svg_btn.setOnClickListener {
+
+           startAnimator(R.drawable.line_animated_search,false)
+       }
 
     }
 
@@ -154,13 +159,36 @@ class MainActivity : BaseActivity<MainViewModel>() {
         swipe_rv.adapter = adapter
     }
 
-    private fun loopRv(){
+    private fun loopRv() {
 
         loop_rv.adapter = MyAdapter()
         val looperManager = LooperHorizontalLayoutManager()
         looperManager.setLooperEnable(true)
         loop_rv.layoutManager = looperManager
     }
+
+
+    private fun startAnimator(lineAnimatedVector:Int,isRegister: Boolean):Animatable{
+
+        val animatedVectorDrawable = AnimatedVectorDrawableCompat.create(this, lineAnimatedVector)
+        svg_iv.setImageDrawable(animatedVectorDrawable)
+        val animatable = svg_iv.drawable as Animatable
+        animatable.start()
+        animatedVectorDrawable?.registerAnimationCallback(object:Animatable2Compat.AnimationCallback(){
+            override fun onAnimationEnd(drawable: Drawable?) {
+                super.onAnimationEnd(drawable)
+                if (!isRegister)return
+                animatedVectorDrawable.unregisterAnimationCallback(this)
+                (drawable as Animatable).start()
+            }
+        })
+        return animatable
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     override fun obtainViewModel(): MainViewModel? {
 
         return ViewModelProviders.of(this).get(MainViewModel::class.java)
