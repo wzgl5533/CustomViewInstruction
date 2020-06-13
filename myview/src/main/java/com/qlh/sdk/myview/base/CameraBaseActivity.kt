@@ -13,7 +13,6 @@ import com.blankj.utilcode.util.ScreenUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.qlh.sdk.myview.R
 import com.qlh.sdk.myview.callback.TakePictureSuccess
-import com.qlh.sdk.myview.utils.BitmapUtils
 import com.tbruyelle.rxpermissions2.RxPermissions
 import java.util.*
 import kotlin.Comparator
@@ -37,8 +36,13 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
     private val sizeComparator = CameraSizeComparator()
     private var mSensorControler: SensorControler? = null
     private var root :View? = null
+    private var enableLog = false//是否打开日志
 
     abstract fun getLayoutId():View
+    /**是否打开日志，主要看相机支持的尺寸**/
+    fun switchLog(enable:Boolean = false){
+        enableLog = enable
+    }
 
     override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {}
 
@@ -97,10 +101,10 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
         mCamera?.release() //释放资源
         mCamera = null //取消原来摄像头
         cameraPosition = if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_BACK) { //此时后置
-            Log.e(TAG, cameraPosition.toString() + "BACK")
+           if (enableLog) Log.e(TAG, cameraPosition.toString() + "BACK")
             Camera.CameraInfo.CAMERA_FACING_FRONT
         } else { //此时前置
-            Log.e(TAG, cameraPosition.toString() + "For")
+            if (enableLog) Log.e(TAG, cameraPosition.toString() + "For")
             Camera.CameraInfo.CAMERA_FACING_BACK
         }
         initCamera()
@@ -219,14 +223,14 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
         val screenScale = ScreenUtils.getScreenHeight() * 1.0 / ScreenUtils.getScreenWidth()
         maxPreSize = preSize[0]
         for (size in preSize) {
-            Log.e(TAG, size.width.toString() + "--pre--" + size.height)
+            if (enableLog) Log.e(TAG, size.width.toString() + "--pre--" + size.height)
         }
         preSize.forEach {
             //需找预览比例最接近屏幕比例的
             if (abs(it.width * 1.0 / it.height - screenScale) <
                     abs(maxPreSize!!.width * 1.0 / maxPreSize!!.height - screenScale)) {
                 maxPreSize = it
-                Log.e(TAG,maxPreSize?.toString())
+                if (enableLog) Log.e(TAG,maxPreSize?.toString())
                 return@forEach
             }
         }
@@ -257,14 +261,14 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
         val screenScale = ScreenUtils.getScreenHeight() * 1.0 / ScreenUtils.getScreenWidth()
         maxPicSize = picSize[0]
         for (size in picSize) {
-            Log.e(TAG, size.width.toString() + "--pic--" + size.height)
+            if (enableLog) Log.e(TAG, size.width.toString() + "--pic--" + size.height)
         }
         picSize.forEach {
             //需找预览比例最接近屏幕比例的
             if (abs(it.width * 1.0 / it.height - screenScale) <
                     abs(maxPicSize!!.width * 1.0 / maxPicSize!!.height - screenScale)) {
                 maxPicSize = it
-                Log.e(TAG,maxPicSize?.toString())
+                if (enableLog)  Log.e(TAG,maxPicSize?.toString())
                 return@forEach
             }
         }
@@ -297,7 +301,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
                     var originalBitmap =
                             BitmapFactory.decodeByteArray(data, 0, data.size)
                     Log.e(TAG,
-                            originalBitmap.width.toString() + "--original--" + originalBitmap.height)
+                            originalBitmap.width.toString() + "--原始尺寸--" + originalBitmap.height)
 
                     //前置图片顺时针旋转180度加镜像翻转
                     if (cameraPosition == Camera.CameraInfo.CAMERA_FACING_FRONT) {
@@ -314,8 +318,8 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
                     //到此图片和预览视角相同
                     Log.e(TAG,
                             originalBitmap.width
-                                    .toString() + "----" + originalBitmap.height)
-                    //将原图回调回去，自由定制裁剪框，不用受到裁剪框的类型制约
+                                    .toString() + "--正确视角尺寸--" + originalBitmap.height)
+
 //                    val frameRect = Rect()
 //                    val fixCutView = root?.findViewById<View>(R.id.fix_cut_view)
 //                    fixCutView?.getGlobalVisibleRect(frameRect)
@@ -323,6 +327,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
 //                            ScreenUtils.getScreenWidth(),
 //                            ScreenUtils.getScreenHeight(), frameRect)
                     //BitmapUtils.saveBitmap(this, originalBitmap)
+                    //将原图回调回去，自由定制裁剪框，不用受到裁剪框的类型制约
                     callBack?.success(originalBitmap)
                     //originalBitmap.recycle()
 
