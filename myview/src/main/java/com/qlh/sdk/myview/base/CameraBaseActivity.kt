@@ -21,7 +21,8 @@ import kotlin.math.abs
 
 /**
  *作者：QLH on 2020-06-06
- *描述：
+ *描述：针对一般的矩形裁剪框：xml包含id为surface_view的SurfaceView控件以及
+ * id为fix_cut_view的一般View控件
  */
 abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback {
 
@@ -314,19 +315,18 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
                     Log.e(TAG,
                             originalBitmap.width
                                     .toString() + "----" + originalBitmap.height)
-                    val frameRect = Rect()
-                    val fixCutView = root?.findViewById<View>(R.id.fix_cut_view)
-                    fixCutView?.getGlobalVisibleRect(frameRect)
-                    val cropBitmap = BitmapUtils.getCropPicture(originalBitmap,
-                            ScreenUtils.getScreenWidth(),
-                            ScreenUtils.getScreenHeight(), frameRect)
+                    //将原图回调回去，自由定制裁剪框，不用受到裁剪框的类型制约
+//                    val frameRect = Rect()
+//                    val fixCutView = root?.findViewById<View>(R.id.fix_cut_view)
+//                    fixCutView?.getGlobalVisibleRect(frameRect)
+//                    val cropBitmap = BitmapUtils.getCropPicture(originalBitmap,
+//                            ScreenUtils.getScreenWidth(),
+//                            ScreenUtils.getScreenHeight(), frameRect)
                     //BitmapUtils.saveBitmap(this, originalBitmap)
-                    callBack?.success(cropBitmap)
-                    originalBitmap.recycle()
+                    callBack?.success(originalBitmap)
+                    //originalBitmap.recycle()
 
-                    Log.e(TAG,
-                            cropBitmap!!.width.toString() + "--crop--" + cropBitmap!!.height
-                    )
+                    //Log.e(TAG, cropBitmap!!.width.toString() + "--crop--" + cropBitmap!!.height)
                     mCamera?.startPreview()
                 })
             }
