@@ -160,7 +160,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
                 getPreSize(this)
                 pictureFormat = PixelFormat.JPEG
                 focusMode = Camera.Parameters.FOCUS_MODE_AUTO
-                Log.e(TAG,"${ScreenUtils.getScreenHeight()}---${ScreenUtils.getScreenWidth()}")
+                if (enableLog) Log.e(TAG,"${ScreenUtils.getScreenHeight()}---${ScreenUtils.getScreenWidth()}")
                 if (isSupportScreenPicture(getPicSize(this))
                         && isSupportScreenPreView(getPreSize(this))
                 ) {
