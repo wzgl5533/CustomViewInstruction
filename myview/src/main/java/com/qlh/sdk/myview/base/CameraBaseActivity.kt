@@ -40,9 +40,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
 
     abstract fun getLayoutId():View
     /**是否打开日志，主要看相机支持的尺寸**/
-    fun switchLog(enable:Boolean = false){
-        enableLog = enable
-    }
+    abstract fun switchLog():Boolean
 
     override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {}
 
@@ -53,6 +51,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         root = getLayoutId()
+        enableLog = switchLog()
         setContentView(root)
         initView()
     }
