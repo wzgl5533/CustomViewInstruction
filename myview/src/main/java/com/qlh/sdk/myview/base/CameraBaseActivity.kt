@@ -42,11 +42,11 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
     /**是否打开日志，主要看相机支持的尺寸**/
     abstract fun switchLog():Boolean
 
-    override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {}
+    override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {}
 
-    override fun surfaceDestroyed(holder: SurfaceHolder?) { releaseCamera() }
+    override fun surfaceDestroyed(holder: SurfaceHolder) { releaseCamera() }
 
-    override fun surfaceCreated(holder: SurfaceHolder?) { initCamera() }
+    override fun surfaceCreated(holder: SurfaceHolder) { initCamera() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
