@@ -229,7 +229,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
             if (abs(it.width * 1.0 / it.height - screenScale) <
                     abs(maxPreSize!!.width * 1.0 / maxPreSize!!.height - screenScale)) {
                 maxPreSize = it
-                if (enableLog) Log.e(TAG,maxPreSize?.toString())
+                if (enableLog) Log.e(TAG,maxPreSize?.let { "${it.width}-last-pre-${it.height}" })
                 return@forEach
             }
         }
@@ -267,7 +267,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
             if (abs(it.width * 1.0 / it.height - screenScale) <
                     abs(maxPicSize!!.width * 1.0 / maxPicSize!!.height - screenScale)) {
                 maxPicSize = it
-                if (enableLog)  Log.e(TAG,maxPicSize?.toString())
+                if (enableLog)  Log.e(TAG,maxPicSize?.let { "${it.width}-last-pre-${it.height}" })
                 return@forEach
             }
         }
