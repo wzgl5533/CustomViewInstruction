@@ -267,7 +267,7 @@ abstract class CameraBaseActivity : AppCompatActivity(), SurfaceHolder.Callback 
             if (abs(it.width * 1.0 / it.height - screenScale) <
                     abs(maxPicSize!!.width * 1.0 / maxPicSize!!.height - screenScale)) {
                 maxPicSize = it
-                if (enableLog)  Log.e(TAG,maxPicSize?.let { "${it.width}-last-pre-${it.height}" })
+                if (enableLog)  Log.e(TAG,maxPicSize?.let { "${it.width}-last-pic-${it.height}" })
                 return@forEach
             }
         }
